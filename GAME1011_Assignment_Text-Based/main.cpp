@@ -39,14 +39,14 @@ int main()
 
 
 	char choice;
+	cout << CurrentRoom->GetDescription() << endl;
 	do {
-		cout << CurrentRoom->GetDescription() << endl;
 		cin >> choice;
 		if (CurrentRoom->GetNeighbourRoom(choice) != nullptr)
 		{
 			cout << "Moved " << choice << endl;
 			CurrentRoom = CurrentRoom->GetNeighbourRoom(choice);
-			cout << CurrentRoom->GetDescription();
+			cout << CurrentRoom->GetDescription() << endl;
 			
 		}
 		else cout << "\aERROR: Invalid Room\n";
