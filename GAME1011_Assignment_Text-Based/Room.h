@@ -17,7 +17,6 @@ public:
 
 	Room* GetNeighbourRoom(char Direction);
 	void SetNeighbourRoom(char Direction, Room* room);
-
 	string GetDescription();
 	void SetDescription(string Description);
 

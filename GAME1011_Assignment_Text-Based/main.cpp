@@ -7,6 +7,7 @@ using namespace std;
 
 int main()
 {
+	system("color F");
 	// Create Text Arrays
 	TextManager* Dialogue = new TextManager();
 
@@ -44,10 +45,19 @@ int main()
 		cin >> choice;
 		if (CurrentRoom->GetNeighbourRoom(choice) != nullptr)
 		{
-			cout << "Moved " << choice << endl;
+			system("cls");
 			CurrentRoom = CurrentRoom->GetNeighbourRoom(choice);
 			cout << CurrentRoom->GetDescription() << endl;
-			
+			cout << "Available Paths: ";
+			if (CurrentRoom->GetNeighbourRoom('n') != nullptr)
+				cout << "North ";
+			if (CurrentRoom->GetNeighbourRoom('e') != nullptr)
+				cout << "East ";
+			if (CurrentRoom->GetNeighbourRoom('s') != nullptr)
+				cout << "South ";
+			if (CurrentRoom->GetNeighbourRoom('w') != nullptr)
+				cout << "West ";
+			cout << endl;
 		}
 		else cout << "\aERROR: Invalid Room\n";
 

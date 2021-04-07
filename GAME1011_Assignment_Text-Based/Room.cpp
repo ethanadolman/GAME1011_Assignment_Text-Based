@@ -88,6 +88,9 @@ void Room::SetNeighbourRoom(char Direction, Room* room)
 	}
 }
 
+
+
+
 string Room::GetDescription()
 {
 	return m_Description;
@@ -97,3 +100,5 @@ void Room::SetDescription(string Description)
 {
 	m_Description = Description;
 }
+
+
