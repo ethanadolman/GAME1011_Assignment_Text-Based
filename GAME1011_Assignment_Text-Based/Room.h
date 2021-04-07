@@ -8,10 +8,11 @@ class Room
 public:
 	Room(string Description = "")
 	{
-		//set desctiption
+
 	}
 	void CreateRoom(char Direction, string Description = "");
-	Room* GetRoom(char Direction);
+	Room* GetNeighbourRoom(char Direction);
+	void SetNeighbourRoom(char Direction, Room* room);
 	string GetDescription();
 	void SetDescription(string Description);
 private:
