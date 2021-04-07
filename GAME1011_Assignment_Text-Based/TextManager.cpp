@@ -7,11 +7,6 @@ using namespace std;
 
 TextManager::TextManager()
 {
-	BuildStringArrays();
-}
-
-void TextManager::BuildStringArrays()
-{
 	ifstream textFile;
 
 	textFile.open("InputFile.txt");
@@ -22,7 +17,13 @@ void TextManager::BuildStringArrays()
 	int endingIndex = 0;
 	int riddleIndex = 0;
 	int doorIndex = 0;
-	while (textFile)
+
+	if (textFile.fail())
+	{
+		cout << "EROOOROROROR" << endl;
+	}
+
+	while (!textFile.eof())
 	{
 		textFile >> index;
 		if (index == 0)	// Descriptions
@@ -55,20 +56,6 @@ void TextManager::BuildStringArrays()
 	textFile.close();
 }
 
-void TextManager::setDescription(int index, string desc)
-{
-	Descriptions[index] = desc;
-}
-
-void TextManager::setResponse(int index, string respo)
-{
-	Responses[index] = respo;
-}
-
-void TextManager::setEndings(int index, string ending)
-{
-	Endings[index] = ending;
-}
 
 string TextManager::getDescription(int index)
 {
@@ -83,4 +70,14 @@ string TextManager::getResponse(int index)
 string TextManager::getEnding(int index)
 {
 	return Endings[index];
+}
+
+string TextManager::getRiddle(int index)
+{
+	return Riddles[index];
+}
+
+string TextManager::getDoors(int index)
+{
+	return Doors[index];
 }

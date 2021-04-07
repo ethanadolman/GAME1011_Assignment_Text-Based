@@ -3,6 +3,7 @@
 0 In this room their are 3 men arguing about which of them is telling the truth.
 0 You arrive in the bedroom, there is a sign with the warning "YOU MAY ONLY SEARCH ONE ITEM", there is also a Purse, a Bag, a Cabinet, a Closet, and a set of Drawers.
 0 You arrived at the entrance to the caves, the smell of freedom is so close you could taste it
+0 You are in a very plain looking room.
 1 First response 
 1 Second response
 2 You have escaped from the hellish mansion
