@@ -1,6 +1,6 @@
 #include "Room.h"
 
-void Room::CreateRoom(char Direction, string Description)
+void Room::CreateRoom(char Direction, string Description = "")
 {
 	
 
@@ -91,7 +91,7 @@ void Room::SetNeighbourRoom(char Direction, Room* room)
 string Room::GetDescription()
 {
 	//return description
-	return;
+	return "";
 }
 
 void Room::SetDescription(string Description)

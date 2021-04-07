@@ -5,11 +5,11 @@ using namespace std;
 
 class Room
 {
+public:
 	Room(string Description = "")
 	{
-		//set desctiption
+
 	}
-public:
 	void CreateRoom(char Direction, string Description = "");
 	Room* GetNeighbourRoom(char Direction);
 	void SetNeighbourRoom(char Direction, Room* room);
