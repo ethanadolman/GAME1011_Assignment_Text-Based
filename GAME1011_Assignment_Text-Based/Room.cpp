@@ -1,6 +1,6 @@
 #include "Room.h"
 
-void Room::CreateRoom(char Direction, string Description = "")
+void Room::CreateRoom(char Direction, string Description)
 {
 	
 
