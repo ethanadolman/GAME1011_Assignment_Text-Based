@@ -16,6 +16,8 @@ private:
 	string Descriptions[20];
 	string Responses[20];
 	string Endings[5];
+	string Riddles[2];
+	string Doors[3];
 
 public:
 

@@ -55,11 +55,10 @@ Room* Room::GetRoom(char Direction)
 
 string Room::GetDescription()
 {
-	//return description
-	return;
+	return m_Description;
 }
 
 void Room::SetDescription(string Description)
 {
-	//set description
+	m_Description = Description;
 }
