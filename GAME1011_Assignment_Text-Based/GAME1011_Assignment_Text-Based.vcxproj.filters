@@ -15,27 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Desktop\GAME1011_Assignment_Text-Based\Text_Based_Assignment\DynIntStack.cpp">
+    <ClCompile Include="DynIntStack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Desktop\GAME1011_Assignment_Text-Based\Text_Based_Assignment\main.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Desktop\GAME1011_Assignment_Text-Based\Text_Based_Assignment\Room.cpp">
+    <ClCompile Include="Room.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Desktop\GAME1011_Assignment_Text-Based\Text_Based_Assignment\TextManager.cpp">
+    <ClCompile Include="TextManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Desktop\GAME1011_Assignment_Text-Based\Text_Based_Assignment\DynIntStack.h">
+    <ClInclude Include="DynIntStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Desktop\GAME1011_Assignment_Text-Based\Text_Based_Assignment\Room.h">
+    <ClInclude Include="Room.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Desktop\GAME1011_Assignment_Text-Based\Text_Based_Assignment\TextManager.h">
+    <ClInclude Include="TextManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

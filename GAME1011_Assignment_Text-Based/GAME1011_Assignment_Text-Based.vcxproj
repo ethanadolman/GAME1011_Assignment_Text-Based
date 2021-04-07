@@ -18,6 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DynIntStack.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Room.cpp" />
+    <ClCompile Include="TextManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DynIntStack.h" />
+    <ClInclude Include="Room.h" />
+    <ClInclude Include="TextManager.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -138,17 +149,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\..\Desktop\GAME1011_Assignment_Text-Based\Text_Based_Assignment\DynIntStack.cpp" />
-    <ClCompile Include="..\..\..\..\Desktop\GAME1011_Assignment_Text-Based\Text_Based_Assignment\main.cpp" />
-    <ClCompile Include="..\..\..\..\Desktop\GAME1011_Assignment_Text-Based\Text_Based_Assignment\Room.cpp" />
-    <ClCompile Include="..\..\..\..\Desktop\GAME1011_Assignment_Text-Based\Text_Based_Assignment\TextManager.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\Desktop\GAME1011_Assignment_Text-Based\Text_Based_Assignment\DynIntStack.h" />
-    <ClInclude Include="..\..\..\..\Desktop\GAME1011_Assignment_Text-Based\Text_Based_Assignment\Room.h" />
-    <ClInclude Include="..\..\..\..\Desktop\GAME1011_Assignment_Text-Based\Text_Based_Assignment\TextManager.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
