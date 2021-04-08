@@ -122,8 +122,16 @@ Item* Room::Search(string Name)
 		if (Searchables[i]->name == Name && Searchables[i]->Searched == false)
 		{
 			Searchables[i]->Searched = true;
-			cout << "You obtained a " << Searchables[i]->item->Name << endl;
-			return Searchables[i]->item;
+			if (Searchables[i]->item != nullptr)
+			{
+				cout << "You obtained a " << Searchables[i]->item->Name << endl;
+				return Searchables[i]->item;
+			}
+			else
+			{
+				cout << Searchables[i]->name << " was empty" << endl;
+				return nullptr;
+			}
 		}
 	}
 	cout << "\aERROR: Searchable does not exist or has already been searched" << endl;
