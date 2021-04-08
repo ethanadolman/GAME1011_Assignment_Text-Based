@@ -1,5 +1,5 @@
 #include <iostream>
-#include "DynIntStack.h"
+#include "DynRoomStack.h"
 #include <cstdlib>
 using namespace std;
 
@@ -7,9 +7,9 @@ using namespace std;
 // Member function push pushes the argument onto   *
 // the stack.                                      *
 //**************************************************
-void DynIntStack::push(int num)
+void DynRoomStack::push(Room * newRoom)
 {
-    top = new StackNode(num, top);
+    top = new RoomNode(newRoom, top);
 }
 
 //*****************************************************
@@ -17,18 +17,18 @@ void DynIntStack::push(int num)
 // of the stack and copies it into the variable       *
 // passed as an argument.                             *
 //*****************************************************
-void DynIntStack::pop(int& num)
+void DynRoomStack::pop(Room* removeRoom)
 {
-    StackNode* temp;
+    RoomNode* temp;
 
     if (isEmpty())
     {
         cout << "The stack is empty.\n";
-        exit(1);
+        //exit(1);
     }
     else   // Pop value off top of stack
     {
-        num = top->value;
+        removeRoom = top->SavedRoom;
         temp = top;
         top = top->next;
         delete temp;
@@ -39,7 +39,7 @@ void DynIntStack::pop(int& num)
 // Member function isEmpty returns true if the stack  *
 // is empty, or false otherwise.                      *
 //*****************************************************
-bool DynIntStack::isEmpty() const
+bool DynRoomStack::isEmpty() const
 {
     if (!top)
         return true;

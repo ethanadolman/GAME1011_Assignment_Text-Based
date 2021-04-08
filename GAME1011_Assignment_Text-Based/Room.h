@@ -47,6 +47,7 @@ public:
 	string ListSearchables(int i = 0);
 	Item* Search(string Name);
 	//	void AddSearchable(string Name, string Item = NULL) { new Searchable(Name, Item); };
+	
 private:
 
 	string m_Description;
