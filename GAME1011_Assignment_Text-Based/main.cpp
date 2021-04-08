@@ -99,6 +99,10 @@ int main()
 				system("pause");
 			}
 		}
+		else if (object == "b" || object == "B" || object == "back" || object == "Back")
+		{
+			//grab top of stack and pop back here
+		}
 		
 		
 
