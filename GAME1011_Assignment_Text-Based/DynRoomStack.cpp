@@ -24,7 +24,7 @@ void DynRoomStack::pop(Room* removeRoom)
     if (isEmpty())
     {
         cout << "The stack is empty.\n";
-        exit(1);
+        //exit(1);
     }
     else   // Pop value off top of stack
     {
