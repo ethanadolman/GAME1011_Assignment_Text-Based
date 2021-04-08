@@ -1,5 +1,3 @@
-//test
-
 #include <iostream>
 #include "Room.h"
 #include "TextManager.h"
@@ -24,21 +22,15 @@ int main()
 
 	CurrentRoom->CreateRoom('e', Dialogue->getDescription(5)); //infinite loop room
 
+	vector<Item*> Inventory;
+	
 
-	if (CurrentRoom->GetNeighbourRoom('n') != nullptr)
-		CurrentRoom->GetDescription() + "\n" + Dialogue->getDoors(0);
-
-	if (CurrentRoom->GetNeighbourRoom('e') != nullptr)
-		CurrentRoom->GetDescription() + "\n" + Dialogue->getDoors(1);
-
-	if (CurrentRoom->GetNeighbourRoom('s') != nullptr)
-		CurrentRoom->GetDescription() + "\n" + Dialogue->getDoors(2);
-
-	if (CurrentRoom->GetNeighbourRoom('w') != nullptr)
-		CurrentRoom->GetDescription() + "\n" + Dialogue->getDoors(3);
-
-
-
+	CurrentRoom->GetNeighbourRoom('s')->AddSearchable("Drawer", new Item("Note"));
+	CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w')->AddSearchable("Closet");
+	CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w')->AddSearchable("Drawer");
+	CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w')->AddSearchable("Bag", new Item("Key"));
+	CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w')->AddSearchable("Purse");
+	CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w')->AddSearchable("Cabinet");
 	char choice;
 	cout << CurrentRoom->GetDescription() << endl;
 	do {
@@ -48,6 +40,12 @@ int main()
 			system("cls");
 			CurrentRoom = CurrentRoom->GetNeighbourRoom(choice);
 			cout << CurrentRoom->GetDescription() << endl;
+			cout << "Searchables:";
+			cout << CurrentRoom->ListSearchables();
+			/*Item* item = CurrentRoom->Search("Drawer");
+			if (item != nullptr)
+				Inventory.push_back(item);
+			cout << Inventory[0]->Name;*/
 			cout << "Available Paths: ";
 			if (CurrentRoom->GetNeighbourRoom('n') != nullptr)
 				cout << "North ";

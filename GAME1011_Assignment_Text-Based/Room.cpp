@@ -65,6 +65,7 @@ Room* Room::GetNeighbourRoom(char Direction)
 	}
 }
 
+
 void Room::SetNeighbourRoom(char Direction, Room* room)
 {
 	switch (Direction)
@@ -89,16 +90,44 @@ void Room::SetNeighbourRoom(char Direction, Room* room)
 }
 
 
-
-
 string Room::GetDescription()
 {
 	return m_Description;
 }
 
+
 void Room::SetDescription(string Description)
 {
 	m_Description = Description;
+}
+
+string Room::ListSearchables(int i)
+{
+	if (i < Searchables.size())
+	{
+		if (Searchables[i]->Searched == false)
+		{
+			return " " + Searchables[i]->name + ListSearchables(i+1);
+		}
+			return ListSearchables(i+1);
+	}
+	return "\n";
+	
+}
+
+Item* Room::Search(string Name)
+{
+	for (unsigned i = 0; i < Searchables.size(); i++)
+	{
+		if (Searchables[i]->name == Name && Searchables[i]->Searched == false)
+		{
+			Searchables[i]->Searched = true;
+			cout << "You obtained a " << Searchables[i]->item->Name << endl;
+			return Searchables[i]->item;
+		}
+	}
+	cout << "\aERROR: Searchable does not exist or has already been searched" << endl;
+	return nullptr;
 }
 
 
