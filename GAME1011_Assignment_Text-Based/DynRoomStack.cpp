@@ -3,6 +3,11 @@
 #include <cstdlib>
 using namespace std;
 
+Room* DynRoomStack::getTop()
+{
+    return top->SavedRoom;
+}
+
 //**************************************************
 // Member function push pushes the argument onto   *
 // the stack.                                      *

@@ -35,10 +35,17 @@ int main()
 	CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w')->AddSearchable("Bag", new Item("Key"));
 	CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w')->AddSearchable("Purse");
 	CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w')->AddSearchable("Cabinet");
+	cout << "======================================\n";
+	cout << "Welcome to the Mansion of Doom!\n";
+	cout << "======================================\n\n";
+	cout << "Your goal is to escape the mansion using your wits and the 'help' found within\n";
+	cout << "\nGood Luck...\n\n";
 
+	system("pause");
 
 	string action, object;
 	do {
+		
 		system("cls");
 		cout << CurrentRoom->GetDescription() << endl;
 		cout << "Searchables:";
@@ -61,7 +68,24 @@ int main()
 		if (object == "n" || object == "N" || object == "north" || object == "North")
 		{
 			if (CurrentRoom->GetNeighbourRoom('n') != nullptr)
+			{
+				if(CurrentRoom->GetNeighbourRoom('n')->GetDescription() == Dialogue->getDescription(4))
+					for (auto item : Inventory)
+					{
+						if (item->Name == "Key")
+						{
+							cout << "You unlock the door!\n";
+							cout << "Hope you know which way to escape...\n";
+							system("pause");
+							StackOfRooms->push(CurrentRoom);
+							CurrentRoom = CurrentRoom->GetNeighbourRoom('n');
+							// Need to create caves to continue
+						}
+					}
+
+				StackOfRooms->push(CurrentRoom);
 				CurrentRoom = CurrentRoom->GetNeighbourRoom('n');
+			}
 			else
 			{
 				cout << "\aERROR: Invalid Room\n";
@@ -72,7 +96,10 @@ int main()
 		else if (object == "e" || object == "E" || object == "east" || object == "East")
 		{
 			if (CurrentRoom->GetNeighbourRoom('e') != nullptr)
+			{
+				StackOfRooms->push(CurrentRoom);
 				CurrentRoom = CurrentRoom->GetNeighbourRoom('e');
+			}
 			else
 			{
 				cout << "\aERROR: Invalid Room\n";
@@ -82,7 +109,10 @@ int main()
 		else if (object == "s" || object == "S" || object == "south" || object == "South")
 		{
 			if (CurrentRoom->GetNeighbourRoom('s') != nullptr)
+			{
+				StackOfRooms->push(CurrentRoom);
 				CurrentRoom = CurrentRoom->GetNeighbourRoom('s');
+			}
 			else
 			{
 				cout << "\aERROR: Invalid Room\n";
@@ -92,7 +122,10 @@ int main()
 		else if (object == "w" || object == "W" || object == "west" || object == "West")
 		{
 			if (CurrentRoom->GetNeighbourRoom('w') != nullptr)
+			{
+				StackOfRooms->push(CurrentRoom);
 				CurrentRoom = CurrentRoom->GetNeighbourRoom('w');
+			}
 			else
 			{
 				cout << "\aERROR: Invalid Room\n";
@@ -101,7 +134,9 @@ int main()
 		}
 		else if (object == "b" || object == "B" || object == "back" || object == "Back")
 		{
-			//grab top of stack and pop back here
+			Room* temp = nullptr;
+			StackOfRooms->pop(temp);
+			CurrentRoom = temp;
 		}
 		
 		
