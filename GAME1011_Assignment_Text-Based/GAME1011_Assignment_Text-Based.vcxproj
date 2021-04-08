@@ -19,13 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DynIntStack.cpp" />
+    <ClCompile Include="DynRoomStack.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="TextManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DynIntStack.h" />
+    <ClInclude Include="DynRoomStack.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="TextManager.h" />
   </ItemGroup>

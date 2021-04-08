@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DynIntStack.cpp">
+    <ClCompile Include="DynRoomStack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -29,7 +29,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DynIntStack.h">
+    <ClInclude Include="DynRoomStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Room.h">

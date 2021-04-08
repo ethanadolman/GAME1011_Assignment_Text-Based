@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Room.h"
 #include "TextManager.h"
+#include "DynRoomStack.h"
 using namespace std;
 
 int main()
@@ -8,6 +9,7 @@ int main()
 	system("color F");
 	// Create Text Arrays
 	TextManager* Dialogue = new TextManager();
+	DynRoomStack* StackOfRooms = new DynRoomStack();
 
 	// Create First room
 	Room* CurrentRoom = new Room(Dialogue->getDescription(0));
@@ -22,6 +24,7 @@ int main()
 
 	CurrentRoom->CreateRoom('e', Dialogue->getDescription(5)); //infinite loop room
 
+
 	vector<Item*> Inventory;
 	
 
@@ -31,6 +34,16 @@ int main()
 	CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w')->AddSearchable("Bag", new Item("Key"));
 	CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w')->AddSearchable("Purse");
 	CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w')->AddSearchable("Cabinet");
+
+
+	StackOfRooms->push(CurrentRoom);
+	StackOfRooms->push(CurrentRoom->GetNeighbourRoom('s'));
+	StackOfRooms->push(CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('e'));
+	StackOfRooms->push(CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w'));
+	StackOfRooms->push(CurrentRoom->GetNeighbourRoom('n'));
+	StackOfRooms->push(CurrentRoom->GetNeighbourRoom('e'));
+
+
 	char choice;
 	cout << CurrentRoom->GetDescription() << endl;
 	do {
