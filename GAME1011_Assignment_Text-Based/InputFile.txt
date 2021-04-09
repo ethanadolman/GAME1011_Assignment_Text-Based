@@ -1,4 +1,4 @@
-0You find yourself in the Main room. You notice that the door to the North is locked.
+0You find yourself in the Main room. Three doors surround you.
 0This room contains a single set of drawers.
 0In this room their are 3 men all claiming to be telling the truth. Atleast one is telling the trust, the rest are lying.
 0You arrive in the bedroom, a sign reads "Those who search and emerge empty handed shall face a fatal consequence".
