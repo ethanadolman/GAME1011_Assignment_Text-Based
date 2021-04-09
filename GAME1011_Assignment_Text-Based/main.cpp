@@ -21,13 +21,13 @@ int main()
 
 	CurrentRoom->GetNeighbourRoom('s')->CreateRoom('w', Dialogue->getDescription(3)); //bedroom
 
-	CurrentRoom->CreateRoom('n', Dialogue->getDescription(4)); // locked room (cave)
+	CurrentRoom->CreateRoom('n', Dialogue->getDescription(4), true); // locked room (cave)
 
 	CurrentRoom->CreateRoom('e', Dialogue->getDescription(5)); //infinite loop room
 
 
 	vector<Item*> Inventory;
-	
+
 
 	CurrentRoom->GetNeighbourRoom('s')->AddSearchable("Drawer", new Item("Note"));
 	CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w')->AddSearchable("Closet");
@@ -35,6 +35,8 @@ int main()
 	CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w')->AddSearchable("Bag", new Item("Key"));
 	CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w')->AddSearchable("Purse");
 	CurrentRoom->GetNeighbourRoom('s')->GetNeighbourRoom('w')->AddSearchable("Cabinet");
+
+
 	cout << "======================================\n";
 	cout << "Welcome to the Mansion of Doom!\n";
 	cout << "======================================\n\n";
@@ -45,7 +47,7 @@ int main()
 
 	string action, object;
 	do {
-		
+
 		system("cls");
 		cout << CurrentRoom->GetDescription() << endl;
 		cout << "Searchables:";
@@ -61,134 +63,204 @@ int main()
 		if (CurrentRoom->GetNeighbourRoom('w') != nullptr)
 			cout << "West ";
 		cout << endl;
-	cin >> action >> object;
-	system("cls");
-	if (action == "go" || action == "Go" || action == "move" || action == "Move")
-	{
-		if (object == "n" || object == "N" || object == "north" || object == "North")
+		cin >> action >> object;
+		system("cls");
+		if (action == "go" || action == "Go" || action == "move" || action == "Move")
 		{
-			if (CurrentRoom->GetNeighbourRoom('n') != nullptr)
+			if (object == "n" || object == "N" || object == "north" || object == "North")
 			{
-				if(CurrentRoom->GetNeighbourRoom('n')->GetDescription() == Dialogue->getDescription(4))
-					for (auto item : Inventory)
+				if (CurrentRoom->GetNeighbourRoom('n') != nullptr)
+				{
+					if (!CurrentRoom->GetNeighbourRoom('n')->isLocked())
 					{
-						if (item->Name == "Key")
-						{
-							cout << "You unlock the door!\n";
-							cout << "Hope you know which way to escape...\n";
-							system("pause");
-							StackOfRooms->push(CurrentRoom);
-							CurrentRoom = CurrentRoom->GetNeighbourRoom('n');
-							// Need to create caves to continue
-						}
+						//if (CurrentRoom->GetNeighbourRoom('n')->GetDescription() == Dialogue->getDescription(4))
+						//	for (auto item : Inventory)
+						//	{
+						//		if (item->Name == "Key")
+						//		{
+						//			cout << "You unlock the door!\n";
+						//			cout << "Hope you know which way to escape...\n";
+						//			system("pause");
+						//			StackOfRooms->push(CurrentRoom);
+						//			CurrentRoom = CurrentRoom->GetNeighbourRoom('n');
+						//			// Need to create caves to continue
+						//		}
+						//	}
+
+						StackOfRooms->push(CurrentRoom);
+						CurrentRoom = CurrentRoom->GetNeighbourRoom('n');
 					}
+					else
+					{
+						cout << "Door is Locked\n";
+						system("pause");
+					}
+				}
+				else
+				{
+					cout << "\aERROR: Room not found\n";
+					system("pause");
+				}
+			}
 
-				StackOfRooms->push(CurrentRoom);
-				CurrentRoom = CurrentRoom->GetNeighbourRoom('n');
+			else if (object == "e" || object == "E" || object == "east" || object == "East")
+			{
+				if (CurrentRoom->GetNeighbourRoom('e') != nullptr)
+				{
+					if (!CurrentRoom->GetNeighbourRoom('e')->isLocked())
+					{
+						StackOfRooms->push(CurrentRoom);
+						CurrentRoom = CurrentRoom->GetNeighbourRoom('e');
+					}
+					else
+					{
+						cout << "Door is Locked\n";
+						system("pause");
+					}
+				}
+				else
+				{
+					cout << "\aERROR: Room not found\n";
+					system("pause");
+				}
+			}
+			else if (object == "s" || object == "S" || object == "south" || object == "South")
+			{
+				if (CurrentRoom->GetNeighbourRoom('s') != nullptr)
+				{
+					if (!CurrentRoom->GetNeighbourRoom('s')->isLocked())
+					{
+						StackOfRooms->push(CurrentRoom);
+						CurrentRoom = CurrentRoom->GetNeighbourRoom('s');
+					}
+					else
+					{
+						cout << "Door is Locked\n";
+						system("pause");
+					}
+				}
+				else
+				{
+					cout << "\aERROR: Room not found\n";
+					system("pause");
+				}
+			}
+			else if (object == "w" || object == "W" || object == "west" || object == "West")
+			{
+				if (CurrentRoom->GetNeighbourRoom('w') != nullptr)
+				{
+					if (!CurrentRoom->GetNeighbourRoom('w')->isLocked())
+					{
+						StackOfRooms->push(CurrentRoom);
+						CurrentRoom = CurrentRoom->GetNeighbourRoom('w');
+					}
+					else
+					{
+						cout << "Door is Locked\n";
+						system("pause");
+					}
+				}
+				else
+				{
+					cout << "\aERROR: Room not found\n";
+					system("pause");
+				}
+			}
+			else if (object == "b" || object == "B" || object == "back" || object == "Back")
+			{
+				Room* temp = nullptr;
+				StackOfRooms->pop(temp);
+				CurrentRoom = temp;
 			}
 			else
-			{
-				cout << "\aERROR: Invalid Room\n";
+				{
+				cout << "\aERROR: Invalid Room \"" << object << "\"\n";
 				system("pause");
-			}
-		}
+				}
 
-		else if (object == "e" || object == "E" || object == "east" || object == "East")
-		{
-			if (CurrentRoom->GetNeighbourRoom('e') != nullptr)
-			{
-				StackOfRooms->push(CurrentRoom);
-				CurrentRoom = CurrentRoom->GetNeighbourRoom('e');
-			}
-			else
-			{
-				cout << "\aERROR: Invalid Room\n";
-				system("pause");
-			}
-		}
-		else if (object == "s" || object == "S" || object == "south" || object == "South")
-		{
-			if (CurrentRoom->GetNeighbourRoom('s') != nullptr)
-			{
-				StackOfRooms->push(CurrentRoom);
-				CurrentRoom = CurrentRoom->GetNeighbourRoom('s');
-			}
-			else
-			{
-				cout << "\aERROR: Invalid Room\n";
-				system("pause");
-			}
-		}
-		else if (object == "w" || object == "W" || object == "west" || object == "West")
-		{
-			if (CurrentRoom->GetNeighbourRoom('w') != nullptr)
-			{
-				StackOfRooms->push(CurrentRoom);
-				CurrentRoom = CurrentRoom->GetNeighbourRoom('w');
-			}
-			else
-			{
-				cout << "\aERROR: Invalid Room\n";
-				system("pause");
-			}
-		}
-		else if (object == "b" || object == "B" || object == "back" || object == "Back")
-		{
-			Room* temp = nullptr;
-			StackOfRooms->pop(temp);
-			CurrentRoom = temp;
-		}
-		
 
-	}
-	else if (action == "use" || action == "Use")
-	{
-		bool ObjFound = false;
-		for (unsigned i = 0; i < Inventory.size(); i++)
+		}
+		else if (action == "use" || action == "Use")
 		{
-			
+			bool ObjFound = false;
+			for (unsigned i = 0; i < Inventory.size(); i++)
+			{
+
 				if (object == "key" || object == "Key")
 				{
 					ObjFound = true;
+					if(CurrentRoom->GetNeighbourRoom('n') != nullptr)
+					if (CurrentRoom->GetNeighbourRoom('n')->isLocked())
+					{
+						CurrentRoom->GetNeighbourRoom('n')->Unlock();
+						cout << "North Door Unlocked\n";
+						break;
+					}
+					if (CurrentRoom->GetNeighbourRoom('e') != nullptr)
+					if (CurrentRoom->GetNeighbourRoom('e')->isLocked())
+					{
+						CurrentRoom->GetNeighbourRoom('e')->Unlock();
+						cout << "East Door Unlocked\n";
+						break;
+					}
+					if (CurrentRoom->GetNeighbourRoom('s') != nullptr)
+					if (CurrentRoom->GetNeighbourRoom('s')->isLocked())
+					{
+						CurrentRoom->GetNeighbourRoom('s')->Unlock();
+						cout << "South Door Unlocked\n";
+						break;
+					}
+					if (CurrentRoom->GetNeighbourRoom('w') != nullptr)
+					if (CurrentRoom->GetNeighbourRoom('w')->isLocked())
+					{
+						CurrentRoom->GetNeighbourRoom('w')->Unlock();
+						cout << "West Door Unlocked\n";
+						break;
+					}
+					if(CurrentRoom->GetDescription() == Dialogue->getDescription(2))
+					{
+						cout << Dialogue->getEnding(2) << endl;
+						system("pause");
+						exit(1);
+					}
 					break;
 				}
 				if (object == "note" || object == "Note")
 				{
 					cout << "The note Reads: \n";
-						cout << "1. left follows after right\n2. you always begin with a left\n3. 1. is only becomes true after going left at least once\n4. the first two directions are the same\n5. 2. is false\n6. the third direction is opposite to direction you began with\n7. your first left should follow with a right";
-						ObjFound = true;
-						break;
+					cout << "1. left follows after right\n2. you always begin with a left\n3. 1. is only becomes true after going left at least once\n4. the first two directions are the same\n5. 2. is false\n6. the third direction is opposite to direction you began with\n7. your first left should follow with a right\n";
+					ObjFound = true;
+					break;
 				}
+			}
+			if (ObjFound == false)
+			{
+				cout << "\aERROR: Invalid Item \"" << object << "\"\n";
+			}
+			system("pause");
 		}
-		if (ObjFound == false)
+		else if (action == "search" || action == "Search" || action == "Look" || action == "look")
 		{
-			cout << "\aERROR: Invalid Item\n";
-		}
-		system("pause");
-	}
-	else if (action == "search" || action == "Search" || action == "Look" || action == "look")
-	{
-		Item* item = CurrentRoom->Search(object);
-		if (item != nullptr || item != NULL)
-			Inventory.push_back(item);
-		system("pause");
-	}
-	else {
-		cout << CurrentRoom->GetDescription() << endl;
-		cout << "Searchables:";
-		cout << CurrentRoom->ListSearchables();
+			Item* item = CurrentRoom->Search(object);
 
-		cout << "Available Paths: ";
-		if (CurrentRoom->GetNeighbourRoom('n') != nullptr)
-			cout << "North ";
-		if (CurrentRoom->GetNeighbourRoom('e') != nullptr)
-			cout << "East ";
-		if (CurrentRoom->GetNeighbourRoom('s') != nullptr)
-			cout << "South ";
-		if (CurrentRoom->GetNeighbourRoom('w') != nullptr)
-			cout << "West ";
-		cout << endl;
-	}
+			if (CurrentRoom->GetDescription() == Dialogue->getDescription(3) && item == NULL)
+			{
+				cout << Dialogue->getEnding(0) << endl;
+				system("pause");
+				exit(1);
+			}
+			if (item != nullptr || item != NULL)
+				Inventory.push_back(item);
+
+			system("pause");
+		}
+		else {
+		cout << "\aERROR: Invalid Command \"" << action << " " << object << "\"\n";
+		cout << "Valid Actions: \"Go\" \"Use\" \"Search\" \"Move\"\n";
+		cout << "Valid Objects: \"Key\" \"Note\" \"North\" \"East\" \"South\" \"West\"\n";
+		cout << "Examples: \"Go North\" \"Use Key\" \"Move South\" \"Use Note\"\n";
+		system("pause");
+		}
 	} while (true);
 	return 0;
 }

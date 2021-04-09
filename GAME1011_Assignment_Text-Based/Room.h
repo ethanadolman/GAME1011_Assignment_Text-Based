@@ -12,19 +12,16 @@ struct Item
 	{
 		this->Name = Name;
 	}
-	void Use()
-	{
-
-	}
 };
 
 class Room
 {
 public:
 
-	Room(string Description = "")
+	Room(string Description = "", bool Locked = false)
 	{
 		m_Description = Description;
+		this->Locked = Locked;
 	}
 	struct Searchable
 	{
@@ -37,12 +34,14 @@ public:
 			item = Item;
 		}
 	};
-	void CreateRoom(char Direction, string Description);
+	void CreateRoom(char Direction, string Description, bool Locked = false);
 
 	Room* GetNeighbourRoom(char Direction);
 	void SetNeighbourRoom(char Direction, Room* room);
 	string GetDescription();
 	void SetDescription(string Description);
+	bool isLocked() { return Locked; };
+	void Unlock() { Locked = false; };
 	void AddSearchable(string Name, Item* item = nullptr) { Searchables.push_back(new Searchable(Name, item)); };
 	string ListSearchables(int i = 0);
 	Item* Search(string Name);
@@ -56,5 +55,6 @@ private:
 	Room* South = nullptr;
 	Room* West = nullptr;
 	vector<Searchable*> Searchables;
+	bool Locked;
 };
 
