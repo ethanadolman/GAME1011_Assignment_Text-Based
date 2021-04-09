@@ -3,6 +3,11 @@
 #include <cstdlib>
 using namespace std;
 
+Room* DynRoomStack::getTop()
+{
+    return top->SavedRoom;
+}
+
 //**************************************************
 // Member function push pushes the argument onto   *
 // the stack.                                      *
@@ -17,7 +22,7 @@ void DynRoomStack::push(Room * newRoom)
 // of the stack and copies it into the variable       *
 // passed as an argument.                             *
 //*****************************************************
-void DynRoomStack::pop(Room* removeRoom)
+void DynRoomStack::pop(Room* &removeRoom)
 {
     RoomNode* temp;
 

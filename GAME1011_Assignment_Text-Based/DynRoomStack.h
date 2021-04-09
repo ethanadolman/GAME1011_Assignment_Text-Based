@@ -20,8 +20,9 @@ private:
     RoomNode* top;
 public:
     DynRoomStack() { top = NULL; }
+    Room* getTop();
     void push(Room* newRoom);
-    void pop(Room* removeRoom);
+    void pop(Room* &removeRoom);
     bool isEmpty() const;
 };
 #endif
