@@ -1,6 +1,6 @@
 #include "Room.h"
 
-void Room::CreateRoom(char Direction, string Description)
+void Room::CreateRoom(char Direction, string Description, bool Locked)
 {
 	
 
@@ -10,7 +10,7 @@ void Room::CreateRoom(char Direction, string Description)
 	case 'n':
 		if (North == nullptr)
 		{
-			North = new Room(Description);
+			North = new Room(Description, Locked);
 			this->GetNeighbourRoom('n')->SetNeighbourRoom('s', this);
 		}
 		break;
@@ -18,7 +18,7 @@ void Room::CreateRoom(char Direction, string Description)
 	case 'e':
 		if (East == nullptr)
 		{
-			East = new Room(Description);
+			East = new Room(Description, Locked);
 			this->GetNeighbourRoom('e')->SetNeighbourRoom('w', this);
 		}
 		break;
@@ -26,7 +26,7 @@ void Room::CreateRoom(char Direction, string Description)
 	case 's':
 		if (South == nullptr)
 		{
-			South = new Room(Description);
+			South = new Room(Description, Locked);
 			this->GetNeighbourRoom('s')->SetNeighbourRoom('n', this);
 		}
 		break;
@@ -34,7 +34,7 @@ void Room::CreateRoom(char Direction, string Description)
 	case 'w':
 		if (West == nullptr)
 		{
-			West = new Room(Description);
+			West = new Room(Description, Locked);
 			this->GetNeighbourRoom('w')->SetNeighbourRoom('e', this);
 		}
 		break;
@@ -101,6 +101,7 @@ void Room::SetDescription(string Description)
 	m_Description = Description;
 }
 
+
 string Room::ListSearchables(int i)
 {
 	if (i < Searchables.size())
@@ -129,8 +130,9 @@ Item* Room::Search(string Name)
 			}
 			else
 			{
+
 				cout << Searchables[i]->name << " was empty" << endl;
-				return nullptr;
+				return NULL;
 			}
 		}
 	}

@@ -1,13 +1,15 @@
 0You find yourself in the Main room. You notice that the door to the North is locked.
 0This room contains a single set of drawers.
-0In this room their are 3 men arguing about which of them is telling the truth.
-0You arrive in the bedroom, there is a sign with the warning "YOU MAY ONLY SEARCH ONE ITEM".
+0In this room their are 3 men all claiming to be telling the truth. Atleast one is telling the trust, the rest are lying.
+0You arrive in the bedroom, a sign reads "Those who search and emerge empty handed shall face a fatal consequence".
 0You arrived at the entrance to the caves, the smell of freedom is so close you could taste it
 0You are in a very plain looking room.
 1First response 
 1Second response
+2The ground breaks beneath you and you fall endlessly into the void. ENDING #1: Empty Handed
 2You have escaped from the hellish mansion
+2You hand the 3 men your key. Good job, now you dont have a key. Ending #3: Softlocked
 2Unfortunately you have expired inside the mansion from hell
-3Man A riddle
-3Man B Riddle
-3Man C Riddle
+3 Tom: Alex is telling the truth. "The Key is in the Purse, Closet or Cabinet"
+3 Alex: Tom & Wallace are lying. "If the Key is not in the Purse, Closet, or Cabinet, the Key is in the Drawer."
+3 Wallace: Tom is lying. "The Key is either in the Bag or the Drawer. The Key is not in the Cabinet"
