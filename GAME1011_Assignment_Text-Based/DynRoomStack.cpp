@@ -22,7 +22,7 @@ void DynRoomStack::push(Room * newRoom)
 // of the stack and copies it into the variable       *
 // passed as an argument.                             *
 //*****************************************************
-void DynRoomStack::pop(Room* removeRoom)
+void DynRoomStack::pop(Room* &removeRoom)
 {
     RoomNode* temp;
 

@@ -139,7 +139,6 @@ int main()
 			CurrentRoom = temp;
 		}
 		
-		
 
 	}
 	else if (action == "use" || action == "Use")
