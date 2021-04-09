@@ -98,7 +98,7 @@ int main()
 				}
 				else
 				{
-					cout << "\aERROR: Invalid Room\n";
+					cout << "\aERROR: Room not found\n";
 					system("pause");
 				}
 			}
@@ -120,7 +120,7 @@ int main()
 				}
 				else
 				{
-					cout << "\aERROR: Invalid Room\n";
+					cout << "\aERROR: Room not found\n";
 					system("pause");
 				}
 			}
@@ -141,7 +141,7 @@ int main()
 				}
 				else
 				{
-					cout << "\aERROR: Invalid Room\n";
+					cout << "\aERROR: Room not found\n";
 					system("pause");
 				}
 			}
@@ -162,7 +162,7 @@ int main()
 				}
 				else
 				{
-					cout << "\aERROR: Invalid Room\n";
+					cout << "\aERROR: Room not found\n";
 					system("pause");
 				}
 			}
@@ -172,6 +172,11 @@ int main()
 				StackOfRooms->pop(temp);
 				CurrentRoom = temp;
 			}
+			else
+				{
+				cout << "\aERROR: Invalid Room \"" << object << "\"\n";
+				system("pause");
+				}
 
 
 		}
@@ -230,7 +235,7 @@ int main()
 			}
 			if (ObjFound == false)
 			{
-				cout << "\aERROR: Invalid Item\n";
+				cout << "\aERROR: Invalid Item \"" << object << "\"\n";
 			}
 			system("pause");
 		}
@@ -250,20 +255,11 @@ int main()
 			system("pause");
 		}
 		else {
-			cout << CurrentRoom->GetDescription() << endl;
-			cout << "Searchables:";
-			cout << CurrentRoom->ListSearchables();
-
-			cout << "Available Paths: ";
-			if (CurrentRoom->GetNeighbourRoom('n') != nullptr)
-				cout << "North ";
-			if (CurrentRoom->GetNeighbourRoom('e') != nullptr)
-				cout << "East ";
-			if (CurrentRoom->GetNeighbourRoom('s') != nullptr)
-				cout << "South ";
-			if (CurrentRoom->GetNeighbourRoom('w') != nullptr)
-				cout << "West ";
-			cout << endl;
+		cout << "\aERROR: Invalid Command \"" << action << " " << object << "\"\n";
+		cout << "Valid Actions: \"Go\" \"Use\" \"Search\" \"Move\"\n";
+		cout << "Valid Objects: \"Key\" \"Note\" \"North\" \"East\" \"South\" \"West\"\n";
+		cout << "Examples: \"Go North\" \"Use Key\" \"Move South\" \"Use Note\"\n";
+		system("pause");
 		}
 	} while (true);
 	return 0;
