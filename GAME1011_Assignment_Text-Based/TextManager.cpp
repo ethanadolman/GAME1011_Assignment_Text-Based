@@ -16,7 +16,6 @@ TextManager::TextManager()
 	int responseIndex = 0;
 	int endingIndex = 0;
 	int riddleIndex = 0;
-	int doorIndex = 0;
 
 	if (textFile.fail())
 	{
@@ -42,15 +41,10 @@ TextManager::TextManager()
 			getline(textFile, Endings[endingIndex]);
 			endingIndex++;
 		}
-		else if (index == 3) // Endings
+		else if (index == 3) // Riddles
 		{
 			getline(textFile, Riddles[riddleIndex]);
-			endingIndex++;
-		}
-		else if (index == 4) // Endings
-		{
-			getline(textFile, Doors[doorIndex]);
-			endingIndex++;
+			riddleIndex++;
 		}
 	}
 	textFile.close();
