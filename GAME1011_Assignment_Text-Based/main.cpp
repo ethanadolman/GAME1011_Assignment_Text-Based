@@ -294,7 +294,6 @@ int main()
 				exit(1);
 			}
 			if (item != nullptr)
-				cout << item->Name;
 				Inventory.push_back(item);
 				cout << Inventory.size();
 
