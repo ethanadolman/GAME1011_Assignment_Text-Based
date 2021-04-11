@@ -42,7 +42,9 @@ int main()
 	cout << "======================================\n";
 	cout << "Welcome to the Mansion of Doom!\n";
 	cout << "======================================\n\n";
-	cout << "Your goal is to escape the mansion using your wits and the 'help' found within\n";
+	cout << "Your goal is to escape the mansion using your wits and the 'help' found within\n\n";
+	cout << "type help help into the console to recieve example commands to help you along the way\n";
+	cout << "*Note* commands are Case-Sensitive, so be careful...\n";
 	cout << "\nGood Luck...\n\n";
 
 	system("pause");
@@ -269,7 +271,7 @@ int main()
 				{
 					if (item->Name == "Note") {
 						cout << "The note Reads: \n";
-						cout << "1. left follows after right\n2. you always begin with a left\n3. 1. is only becomes true after going left at least once\n4. the first two directions are the same\n5. 2. is false\n6. the third direction is opposite to direction you began with\n7. your first left should follow with a right\n";
+						cout << "1. left follows after right\n2. you always begin with a left\n3. 1. only becomes true after going left at least once\n4. the first two directions are the same\n5. 2. is false\n6. the third direction is opposite to direction you began with\n7. your first left should follow with a right\n";
 						ObjFound = true;
 						break;
 					}
@@ -301,8 +303,8 @@ int main()
 		else {
 			cout << "\aERROR: Invalid Command \"" << action << " " << object << "\"\n";
 			cout << "Valid Actions: \"Go\" \"Use\" \"Search\" \"Move\"\n";
-			cout << "Valid Objects: \"Key\" \"Note\" \"North\" \"East\" \"South\" \"West\"\n";
-			cout << "Examples: \"Go North\" \"Use Key\" \"Move South\" \"Use Note\" \"Go Back\"\n";
+			cout << "Valid Objects: \"Key\" \"Note\" \"North\" \"East\" \"South\" \"Drawer\" \"Cabinet\"\n";
+			cout << "Examples: \"Go North\" \"Use Key\" \"Move South\" \"Use Note\" \"Go Back\" \"Search Purse\"\n";
 			system("pause");
 		}
 	} while (true);
